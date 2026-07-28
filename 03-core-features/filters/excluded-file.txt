@@ -24,3 +24,4 @@ Related Files in This Course:
 - 03-core-features/filters/
 
 This time it will not trigger pull request workflow event
+New Line
