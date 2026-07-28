@@ -32,3 +32,16 @@ jobs:
           echo "WORKFLOW_VAR: $WORKFLOW_VAR"                 # still visible
           echo "JOB_VAR:      ${FOO:-<UNSET>}"               # not set here
           echo "STEP_VAR:     ${STEP_VAR:-<UNSET>}"          # not set here
+
+  job-3:
+    runs-on: ubuntu-24.04
+    env:
+      JOB_VAR_3: I_AM_JOB_3_SCOPED
+    steps:
+      - name: Inspect scopes job 3 step 2
+        env:
+          STEP_VAR_3: I_AM_STEP_3_SCOPED
+        run: |
+          echo "WORKFLOW_VAR: $WORKFLOW_VAR"        # still visible
+          echo "JOB_VAR:      $JOB_VAR_3"           # visible
+          echo "STEP_VAR:     $STEP_VAR_3"          # visible only here
