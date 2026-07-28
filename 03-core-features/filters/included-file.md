@@ -28,4 +28,3 @@ paths: ['**', '!docs/**']  # Run for all changes except docs
 
 - `03-core-features/workflow-triggers/`
 - `03-core-features/filters/`
-- `Added some text`
