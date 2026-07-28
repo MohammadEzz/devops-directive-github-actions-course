@@ -22,3 +22,5 @@ Use Cases:
 Related Files in This Course:
 - 03-core-features/workflow-triggers/
 - 03-core-features/filters/
+
+This time it will not trigger pull request workflow event
