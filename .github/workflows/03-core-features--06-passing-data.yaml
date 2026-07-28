@@ -25,11 +25,24 @@ jobs:
           echo "FOO (set via GITHUB_ENV):   $FOO"
           echo "foo (step output):          ${{ steps.generate-foo.outputs.foo }}"
 
-  consumer:
+  middleman:
     runs-on: ubuntu-24.04
     needs: producer
+    outputs:
+      status: ${{ steps.middleman-step.outputs.status }}
+    steps:
+      - name: Inspect values inside middleman (note FOO is unset)
+        id: middleman-step
+        run: |
+          status=active
+          echo "status=${status}" >> "$GITHUB_OUTPUT"
+  consumer:
+    runs-on: ubuntu-24.04
+    needs: 
+      - middleman 
+      - producer
     steps:
       - name: Inspect values inside consumer (note FOO is unset)
         run: |
-          echo "Value from producer:        ${{ needs.producer.outputs.foo }}"
-          echo "FOO in consumer:            ${FOO:-<UNSET>}"
+          echo "Value from middleman:       ${{ needs.middleman.outputs.status }}"
+          echo "FOO in consumer:            ${{ needs.producer.outputs.foo }}"
