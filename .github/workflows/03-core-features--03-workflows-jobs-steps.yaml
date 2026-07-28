@@ -28,3 +28,9 @@ jobs:
       - job-3
     steps:
       - run: echo "...to form a directed acyclic graph (DAG)"
+  job-5:
+    runs-on: ubuntu-24.04
+    needs:
+      - job-4
+    steps:
+      - run: echo "The DAG is executed in topological order"
