@@ -1,0 +1,30 @@
+# GitHub Actions Workflow Filters Demo
+
+This document demonstrates the use of path filters and exclusion patterns in GitHub Actions workflows.
+
+## Key Concepts
+
+- Path filters allow workflows to run only when specific files or directories are modified
+- Excluded paths (with `!`) prevent workflow execution when those paths change
+- Useful for optimizing CI/CD pipelines and reducing unnecessary workflow runs
+
+## Example Filter Patterns
+
+```yaml
+paths: ['src/**', 'tests/**']  # Run only when src or tests directories change
+paths-ignore: ['docs/**', '*.md']  # Ignore documentation changes
+# Combined:
+paths: ['**', '!docs/**']  # Run for all changes except docs
+```
+
+## Use Cases
+
+- Exclude documentation-only changes from triggering full test suites
+- Separate workflows for backend vs frontend changes
+- Optimize runner usage and reduce CI costs
+- Speed up feedback loop for relevant code changes
+
+## Related Files in This Course
+
+- `03-core-features/workflow-triggers/`
+- `03-core-features/filters/`
